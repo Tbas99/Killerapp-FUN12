@@ -25,12 +25,12 @@ namespace ProjectManager
 
         private void resourceCreationMenuItem_Click(object sender, EventArgs e)
         {
-            creeerTask.Show();
+            creeerResource.Show();
         }
 
         private void taskCreationMenuItem_Click(object sender, EventArgs e)
         {
-            creeerResource.Show();
+            creeerTask.Show();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,11 @@
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
             this.lbProjectTasksResources = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.projectManagerDataDataSet = new ProjectManager.ProjectManagerDataDataSet();
+            this.projectManagerDataDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectManagerDataDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectManagerDataDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -140,7 +145,7 @@
             this.toolStripMenuItem9,
             this.toolStripMenuItem12});
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(124, 20);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(123, 20);
             this.toolStripMenuItem8.Text = "Tasks and resources";
             // 
             // toolStripMenuItem9
@@ -189,6 +194,16 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "All project tasks and resources:";
             // 
+            // projectManagerDataDataSet
+            // 
+            this.projectManagerDataDataSet.DataSetName = "ProjectManagerDataDataSet";
+            this.projectManagerDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // projectManagerDataDataSetBindingSource
+            // 
+            this.projectManagerDataDataSetBindingSource.DataSource = this.projectManagerDataDataSet;
+            this.projectManagerDataDataSetBindingSource.Position = 0;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +217,8 @@
             this.Text = "Project manager";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectManagerDataDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectManagerDataDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,6 +244,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
         private System.Windows.Forms.ToolStripMenuItem syncToGoogleCalendarsToolStripMenuItem;
+        private ProjectManagerDataDataSet projectManagerDataDataSet;
+        private System.Windows.Forms.BindingSource projectManagerDataDataSetBindingSource;
     }
 }
 

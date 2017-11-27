@@ -30,5 +30,11 @@ namespace ProjectManager
             openSavedState.ShowDialog();
             fileName = openSavedState.FileName;
         }
-    }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Main hoofdmenu = new Main();
+            hoofdmenu.Show();
+        }
+    }   
 }
