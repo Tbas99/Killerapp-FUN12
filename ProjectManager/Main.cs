@@ -26,8 +26,6 @@ namespace ProjectManager
         private void resourceCreationMenuItem_Click(object sender, EventArgs e)
         {
             creeerResource.Show();
-
-            creeerResource.
         }
 
         private void taskCreationMenuItem_Click(object sender, EventArgs e)

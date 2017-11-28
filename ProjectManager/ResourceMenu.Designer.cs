@@ -118,7 +118,8 @@
             // 
             // availableDateRange
             // 
-            this.availableDateRange.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.availableDateRange.CustomFormat = "dd/MM/yyyy";
+            this.availableDateRange.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.availableDateRange.Location = new System.Drawing.Point(15, 133);
             this.availableDateRange.Name = "availableDateRange";
             this.availableDateRange.Size = new System.Drawing.Size(100, 20);
@@ -135,7 +136,8 @@
             // 
             // unavailableDateRange
             // 
-            this.unavailableDateRange.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.unavailableDateRange.CustomFormat = "dd/MM/yyyy";
+            this.unavailableDateRange.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.unavailableDateRange.Location = new System.Drawing.Point(15, 211);
             this.unavailableDateRange.Name = "unavailableDateRange";
             this.unavailableDateRange.Size = new System.Drawing.Size(100, 20);
@@ -185,7 +187,8 @@
             // 
             // unavailableDateRangeEnd
             // 
-            this.unavailableDateRangeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.unavailableDateRangeEnd.CustomFormat = "dd/MM/yyyy";
+            this.unavailableDateRangeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.unavailableDateRangeEnd.Location = new System.Drawing.Point(145, 211);
             this.unavailableDateRangeEnd.Name = "unavailableDateRangeEnd";
             this.unavailableDateRangeEnd.Size = new System.Drawing.Size(100, 20);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Data;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManager
 {
-    class ResourceData
+    public class ResourceData
     {
         // list that contains all column values
         List<DataColumn> testlist = new List<DataColumn>();
@@ -29,23 +30,13 @@ namespace ProjectManager
         // Method to store data in variables
         public ResourceData(string type, string name, string role, string availablePeriod = "", string unavailablePeriod = "", string unavailablePeriodEnd = "")
         {
-            // create dataset instance(s)
-            DataSet database = new DataSet("ProjectManagerDataSet");
-            DataTable resourceTable = database.Tables.
-
-
+            // Assign values to resource
             this.resourceType = type;
             this.resourceName = name;
             this.resourceRole = role;
             this.resourceAvailablePeriod = availablePeriod;
             this.resourceUnavailablePeriod = unavailablePeriod;
             this.resourceUnavailablePeriodEnd = unavailablePeriodEnd;
-
-            DataRow resourceTableRow = resourceTable.NewRow();
-            resourceTableRow.
-
-            resourceTable.Columns.Add(new DataColumn())
-
         }
     }
 }
