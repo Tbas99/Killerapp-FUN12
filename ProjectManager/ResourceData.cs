@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,9 @@ namespace ProjectManager
 {
     class ResourceData
     {
+        // list that contains all column values
+        List<DataColumn> testlist = new List<DataColumn>();
+
         private string resourceType;
         private string resourceName;
         private string resourceRole;
@@ -23,14 +27,25 @@ namespace ProjectManager
         public string ResourceUnavailablePeriodEnd { get { return resourceUnavailablePeriodEnd; } }
 
         // Method to store data in variables
-        public void dataParsing(string type, string name, string role, string availablePeriod = "", string unavailablePeriod = "", string unavailablePeriodEnd = "")
+        public ResourceData(string type, string name, string role, string availablePeriod = "", string unavailablePeriod = "", string unavailablePeriodEnd = "")
         {
+            // create dataset instance(s)
+            DataSet database = new DataSet("ProjectManagerDataSet");
+            DataTable resourceTable = database.Tables.
+
+
             this.resourceType = type;
             this.resourceName = name;
             this.resourceRole = role;
             this.resourceAvailablePeriod = availablePeriod;
             this.resourceUnavailablePeriod = unavailablePeriod;
             this.resourceUnavailablePeriodEnd = unavailablePeriodEnd;
+
+            DataRow resourceTableRow = resourceTable.NewRow();
+            resourceTableRow.
+
+            resourceTable.Columns.Add(new DataColumn())
+
         }
     }
 }

@@ -16,17 +16,18 @@ namespace ProjectManager
         ResourceData data;
 
         // bool to check if date has been filled
-        bool hasDateBeenFilled = false;
+        bool hasDateBeenFilled;
+
+        // list to store created resources
+        private static List<ResourceData> resources = new List<ResourceData>(); 
+
+        public List<ResourceData> Resources { get { return resources; } }
 
         public ResourceMenu()
         {
             InitializeComponent();
-            data = new ResourceData();
 
-            label5.Visible = false;
-            availableDateRange.Visible = false;
-            label6.Visible = false;
-            unavailableDateRange.Visible = false;
+            hideOrShowItems(false);
 
             string[] cbResourceRoleItems = new string[] { "Freelancer", "Trainee", "HR", "IT", "Support", "Management", "Accountancy", "Lead worker", "Finance" };
             cbResourceRole.Items.AddRange(cbResourceRoleItems);
@@ -55,11 +56,11 @@ namespace ProjectManager
                 string unavailableDate = unavailableDateRange.ToString();
                 string unavailableDateEnd = unavailableDateRangeEnd.ToString();
 
-                data.dataParsing(cbResourceType.SelectedItem.ToString(), tbResourceName.Text, cbResourceRole.SelectedItem.ToString(), availableDate, unavailableDate, unavailableDateEnd);
+                resources.Add(new ResourceData(cbResourceType.SelectedItem.ToString(), tbResourceName.Text, cbResourceRole.SelectedItem.ToString(), availableDate, unavailableDate, unavailableDateEnd));
             }
             else
             {
-                data.dataParsing(cbResourceType.SelectedItem.ToString(), tbResourceName.Text, cbResourceRole.SelectedItem.ToString());
+                resources.Add(new ResourceData(cbResourceType.SelectedItem.ToString(), tbResourceName.Text, cbResourceRole.SelectedItem.ToString()));
             }
 
             this.Hide();
