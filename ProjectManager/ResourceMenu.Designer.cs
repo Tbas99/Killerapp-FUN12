@@ -124,6 +124,7 @@
             this.availableDateRange.Name = "availableDateRange";
             this.availableDateRange.Size = new System.Drawing.Size(100, 20);
             this.availableDateRange.TabIndex = 9;
+            this.availableDateRange.Value = new System.DateTime(2017, 11, 29, 10, 49, 53, 0);
             // 
             // label6
             // 
@@ -142,6 +143,7 @@
             this.unavailableDateRange.Name = "unavailableDateRange";
             this.unavailableDateRange.Size = new System.Drawing.Size(100, 20);
             this.unavailableDateRange.TabIndex = 11;
+            this.unavailableDateRange.Value = new System.DateTime(2017, 11, 29, 0, 0, 0, 0);
             // 
             // btCreateResource
             // 

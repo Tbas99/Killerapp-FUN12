@@ -10,9 +10,6 @@ namespace ProjectManager
 {
     public class ResourceData
     {
-        // list that contains all column values
-        List<DataColumn> testlist = new List<DataColumn>();
-
         private string resourceType;
         private string resourceName;
         private string resourceRole;
@@ -30,7 +27,6 @@ namespace ProjectManager
         // Method to store data in variables
         public ResourceData(string type, string name, string role, string availablePeriod = "", string unavailablePeriod = "", string unavailablePeriodEnd = "")
         {
-            // Assign values to resource
             this.resourceType = type;
             this.resourceName = name;
             this.resourceRole = role;

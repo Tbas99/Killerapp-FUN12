@@ -37,12 +37,13 @@
             this.deadlineDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.btCreateTask = new System.Windows.Forms.Button();
+            this.showDeadline = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Location = new System.Drawing.Point(9, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
@@ -51,7 +52,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 116);
+            this.label2.Location = new System.Drawing.Point(9, 157);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 1;
@@ -59,14 +60,14 @@
             // 
             // tbTaskName
             // 
-            this.tbTaskName.Location = new System.Drawing.Point(16, 26);
+            this.tbTaskName.Location = new System.Drawing.Point(12, 38);
             this.tbTaskName.Name = "tbTaskName";
             this.tbTaskName.Size = new System.Drawing.Size(100, 20);
             this.tbTaskName.TabIndex = 2;
             // 
             // tbTaskDetails
             // 
-            this.tbTaskDetails.Location = new System.Drawing.Point(16, 133);
+            this.tbTaskDetails.Location = new System.Drawing.Point(12, 174);
             this.tbTaskDetails.Multiline = true;
             this.tbTaskDetails.Name = "tbTaskDetails";
             this.tbTaskDetails.Size = new System.Drawing.Size(230, 66);
@@ -75,7 +76,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(137, 9);
+            this.label3.Location = new System.Drawing.Point(133, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 4;
@@ -84,22 +85,24 @@
             // cbTaskPhase
             // 
             this.cbTaskPhase.FormattingEnabled = true;
-            this.cbTaskPhase.Location = new System.Drawing.Point(140, 24);
+            this.cbTaskPhase.Location = new System.Drawing.Point(135, 37);
             this.cbTaskPhase.Name = "cbTaskPhase";
             this.cbTaskPhase.Size = new System.Drawing.Size(106, 21);
             this.cbTaskPhase.TabIndex = 5;
             // 
             // deadlineDate
             // 
-            this.deadlineDate.Location = new System.Drawing.Point(16, 80);
+            this.deadlineDate.CustomFormat = "dd/MM/yyyy";
+            this.deadlineDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.deadlineDate.Location = new System.Drawing.Point(12, 123);
             this.deadlineDate.Name = "deadlineDate";
-            this.deadlineDate.Size = new System.Drawing.Size(230, 20);
+            this.deadlineDate.Size = new System.Drawing.Size(100, 20);
             this.deadlineDate.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 64);
+            this.label4.Location = new System.Drawing.Point(9, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 7;
@@ -107,18 +110,34 @@
             // 
             // btCreateTask
             // 
-            this.btCreateTask.Location = new System.Drawing.Point(16, 215);
+            this.btCreateTask.Location = new System.Drawing.Point(12, 256);
             this.btCreateTask.Name = "btCreateTask";
             this.btCreateTask.Size = new System.Drawing.Size(230, 41);
             this.btCreateTask.TabIndex = 8;
             this.btCreateTask.Text = "Create Task";
             this.btCreateTask.UseVisualStyleBackColor = true;
+            this.btCreateTask.Click += new System.EventHandler(this.btCreateTask_Click);
+            // 
+            // showDeadline
+            // 
+            this.showDeadline.AutoSize = true;
+            this.showDeadline.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.showDeadline.Location = new System.Drawing.Point(12, 78);
+            this.showDeadline.Name = "showDeadline";
+            this.showDeadline.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.showDeadline.Size = new System.Drawing.Size(87, 17);
+            this.showDeadline.TabIndex = 9;
+            this.showDeadline.Text = "Time-limited?";
+            this.showDeadline.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.showDeadline.UseVisualStyleBackColor = true;
+            this.showDeadline.CheckedChanged += new System.EventHandler(this.showDeadline_CheckedChanged);
             // 
             // TaskMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(256, 265);
+            this.ClientSize = new System.Drawing.Size(256, 307);
+            this.Controls.Add(this.showDeadline);
             this.Controls.Add(this.btCreateTask);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.deadlineDate);
@@ -146,5 +165,6 @@
         private System.Windows.Forms.DateTimePicker deadlineDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btCreateTask;
+        private System.Windows.Forms.CheckBox showDeadline;
     }
 }

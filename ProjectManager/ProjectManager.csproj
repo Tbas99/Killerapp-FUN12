@@ -71,7 +71,7 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="ResourceData.cs" />
-    <Compile Include="SaveState.cs" />
+    <Compile Include="TaskData.cs" />
     <Compile Include="WelcomeSelection.cs">
       <SubType>Form</SubType>
     </Compile>
