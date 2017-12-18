@@ -64,7 +64,7 @@ namespace ProjectManager
             }
 
             // Create database connection to parse data
-            using (SqlConnection openConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Tob\source\repos\ProjectManager\ProjectManager\ProjectManagerData.mdf;Integrated Security = True"))
+            using (SqlConnection openConnection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\ProjectManagerData.mdf; Integrated Security = True"))
             {
                 string saveQuery = "INSERT into Tasks (Name,Details,Phase,Deadline) VALUES (@Name,@Details,@Phase,@Deadline)";
 
@@ -109,15 +109,26 @@ namespace ProjectManager
                     }
                 }
             }
+            clearFormState();
             this.Hide();
         }
 
 
-        public void hideOrShowItems(bool hideOrShow)
+        private void hideOrShowItems(bool hideOrShow)
         {
             label4.Visible = hideOrShow;
             deadlineDate.Visible = hideOrShow;
             deadlineFilled = hideOrShow;
+        }
+
+        private void clearFormState()
+        {
+            tbTaskName.Clear();
+            tbTaskDetails.Clear();
+            tbTaskDetails.Clear();
+            cbTaskPhase.SelectedIndex = -1;
+            showDeadline.Checked = false;
+            deadlineDate.Value = DateTime.Now;
         }
     }
 }

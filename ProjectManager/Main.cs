@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ProjectManager
 {
@@ -132,6 +134,72 @@ namespace ProjectManager
         private void Main_Load(object sender, EventArgs e)
         {
             populateCalendar();
+        }
+
+        // Save the file
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveToBinary(createResource.resources, createTask.tasks);
+        }
+
+        // Open a saved file
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Create new lists to overwrite current..
+            createResource.resources = readResourcesFromBinary();
+            createTask.tasks = readTasksFromBinary();
+
+            // Finally, destroy the file(s)
+            File.Delete(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\resources.xml");
+            File.Delete(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\tasks.xml");
+        }
+
+        public void saveToBinary(List<ResourceData> resources, List<TaskData> tasks)
+        {
+            // Save all resources
+            // Create the TextWriter for the serialiser to use, using to dispose it in order to clear resources
+            using (Stream filestream = File.Open(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\resources.xml", FileMode.Append))
+            {
+                //create the serialiser to create the binary file
+                var binaryFormatter = new BinaryFormatter();
+
+                //write to the file
+                binaryFormatter.Serialize(filestream, resources);
+            }
+
+            // Same for the task list....
+            using (Stream filestream = File.Open(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\tasks.xml", FileMode.Append))
+            {
+                var binaryFormatter = new BinaryFormatter();
+
+                binaryFormatter.Serialize(filestream, tasks);
+            }
+        }
+
+        // Extract resources from binary xml
+        public List<ResourceData> readResourcesFromBinary()
+        {
+            using (Stream filestream = File.Open(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\resources.xml", FileMode.Open))
+            {
+                //create the serialiser to modify/read the binary file
+                var binaryFormatter = new BinaryFormatter();
+
+                // Return list contents to application
+                return (List<ResourceData>)binaryFormatter.Deserialize(filestream);
+            }
+        }
+
+        // Extract tasks from binary xml
+        public List<TaskData> readTasksFromBinary()
+        {
+            using (Stream filestream = File.Open(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\tasks.xml", FileMode.Open))
+            {
+                //create the serialiser to modify/read the binary file
+                var binaryFormatter = new BinaryFormatter();
+
+                // Return list contents to application
+                return (List<TaskData>)binaryFormatter.Deserialize(filestream);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManager
 {
+    [Serializable]
     public class TaskData
     {
         private string taskName;

@@ -104,7 +104,7 @@ namespace ProjectManager
             }
 
             // Create database connection to parse data
-            using(SqlConnection openConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Tob\source\repos\ProjectManager\ProjectManager\ProjectManagerData.mdf;Integrated Security = True"))
+            using(SqlConnection openConnection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\ProjectManagerData.mdf; Integrated Security = True"))
             {
                 string saveQuery = "INSERT into Resources (Resource,Name,Role,AvailableDate,UnavailableDate,UnavailableDateEnd) VALUES (@Resource,@Name,@Role,@AvailableDate,@UnavailableDate,@UnavailableDateEnd)";
 
@@ -154,6 +154,7 @@ namespace ProjectManager
                 }
             }
             // Close the window succesfully
+            clearFormState();
             this.Hide();
         }
 
@@ -179,7 +180,7 @@ namespace ProjectManager
 
 
         // Hide a bunch of irrelevant items, or show them
-        void hideOrShowItems(bool HideOrShow)
+        private void hideOrShowItems(bool HideOrShow)
         {
             label5.Visible = HideOrShow;
             availableDateRange.Visible = HideOrShow;
@@ -190,6 +191,17 @@ namespace ProjectManager
             label8.Visible = HideOrShow;
 
             hasDateBeenFilled = HideOrShow;
+        }
+
+        private void clearFormState()
+        {
+            //cbResourceType.SelectedIndex = -1;
+            tbNewResourceRole.Clear();
+            tbResourceName.Clear();
+            //cbResourceRole.SelectedIndex = -1;
+            availableDateRange.Value = DateTime.Now;
+            unavailableDateRange.Value = DateTime.Now;
+            unavailableDateRangeEnd.Value = DateTime.Now.AddDays(7);
         }
     }
 }

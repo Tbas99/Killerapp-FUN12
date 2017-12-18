@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManager
 {
+    [Serializable]
     public class ResourceData
     {
         private string resourceType;
