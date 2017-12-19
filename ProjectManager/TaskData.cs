@@ -9,22 +9,23 @@ namespace ProjectManager
     [Serializable]
     public class TaskData
     {
-        private string taskName;
-        private string taskDetails;
-        private string taskPhase;
-        private string taskDeadline;
+        private string name;
+        private string details;
+        private string phase;
+        private string deadline;
 
-        public string TaskName => taskName;
-        public string TaskDetails => taskDetails;
-        public string TaskPhase => taskPhase;
-        public string TaskDeadline => taskDeadline;
+        public string Name => name;
+        public string Details => details;
+        public string Phase => phase;
+        public string Deadline => deadline;
+
 
         public TaskData(string taskname, string taskdetails, string taskphase, string taskdeadline = "")
         {
-            this.taskName = taskname;
-            this.taskDetails = taskdetails;
-            this.taskPhase = taskphase;
-            this.taskDeadline = taskdeadline;
+            this.name = taskname;
+            this.details = taskdetails;
+            this.phase = taskphase;
+            this.deadline = taskdeadline;
         }
     }
 }

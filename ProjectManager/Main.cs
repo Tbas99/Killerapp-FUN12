@@ -47,7 +47,7 @@ namespace ProjectManager
         {
             foreach (TaskData r in tasks)
             {
-                string taskName = r.TaskName;
+                string taskName = r.Name;
                 if (lbProjectTasksResources.Items.Contains(taskName))
                 {
                     continue;
@@ -65,9 +65,9 @@ namespace ProjectManager
             lbTaskDetails.Items.Clear();
             foreach (TaskData r in tasks)
             {
-                if (r.TaskName == selectedTask)
+                if (r.Name == selectedTask)
                 {
-                    string[] taskItems = new string[] { "Task details:", r.TaskDetails, "\n", "Task phase:", r.TaskPhase, "\n", "Task deadline:", r.TaskDeadline, "\n" };
+                    string[] taskItems = new string[] { "Task details:", r.Details, "\n", "Task phase:", r.Phase, "\n", "Task deadline:", r.Deadline, "\n" };
                     lbTaskDetails.Items.AddRange(taskItems);
                 }
             }
@@ -96,10 +96,10 @@ namespace ProjectManager
 
             // Add a month to the calendar
             for (int i = 0; i < 31; i++)
-            {
-                calendarDays = calendarDays.AddDays(1);
+            { 
                 string columnName = calendarDays.ToString("dd/MM/yyyy");
                 listView1.Columns.Add(columnName, 75);
+                calendarDays = calendarDays.AddDays(1);
             }
         }
 
@@ -107,11 +107,11 @@ namespace ProjectManager
         {
             int columnNumber = 0;
             ListViewItem item = new ListViewItem();
-            if (taskdata.TaskDeadline != null)
+            if (taskdata.Deadline != null)
             {
                 foreach (ColumnHeader header in listView1.Columns)
                 {
-                    if (taskdata.TaskDeadline == header.Text)
+                    if (taskdata.Deadline == header.Text)
                     {
                         if (columnNumber == 0)
                         {
@@ -123,7 +123,10 @@ namespace ProjectManager
                     }
                     else
                     {
-                        item.SubItems.Add("");
+                        if (columnNumber != 0)
+                        {
+                            item.SubItems.Add("");
+                        }
                     }
                     columnNumber++;
                 }
@@ -145,20 +148,20 @@ namespace ProjectManager
         // Open a saved file
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Create new lists to overwrite current..
+            // Update lists.....
             createResource.resources = readResourcesFromBinary();
             createTask.tasks = readTasksFromBinary();
 
             // Finally, destroy the file(s)
-            File.Delete(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\resources.xml");
-            File.Delete(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\tasks.xml");
+            File.Delete(@"C:\Users\Tob\source\repos\ProjectManager\ProjectManager\SavedStates\resources.xml");
+            File.Delete(@"C:\Users\Tob\source\repos\ProjectManager\ProjectManager\SavedStates\tasks.xml");
         }
 
         public void saveToBinary(List<ResourceData> resources, List<TaskData> tasks)
         {
             // Save all resources
             // Create the TextWriter for the serialiser to use, using to dispose it in order to clear resources
-            using (Stream filestream = File.Open(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\resources.xml", FileMode.Append))
+            using (Stream filestream = File.Open(@"C:\Users\Tob\source\repos\ProjectManager\ProjectManager\SavedStates\resources.xml", FileMode.Append))
             {
                 //create the serialiser to create the binary file
                 var binaryFormatter = new BinaryFormatter();
@@ -168,7 +171,7 @@ namespace ProjectManager
             }
 
             // Same for the task list....
-            using (Stream filestream = File.Open(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\tasks.xml", FileMode.Append))
+            using (Stream filestream = File.Open(@"C:\Users\Tob\source\repos\ProjectManager\ProjectManager\SavedStates\tasks.xml", FileMode.Append))
             {
                 var binaryFormatter = new BinaryFormatter();
 
@@ -179,7 +182,7 @@ namespace ProjectManager
         // Extract resources from binary xml
         public List<ResourceData> readResourcesFromBinary()
         {
-            using (Stream filestream = File.Open(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\resources.xml", FileMode.Open))
+            using (Stream filestream = File.Open(@"C:\Users\Tob\source\repos\ProjectManager\ProjectManager\SavedStates\resources.xml", FileMode.Open))
             {
                 //create the serialiser to modify/read the binary file
                 var binaryFormatter = new BinaryFormatter();
@@ -192,7 +195,7 @@ namespace ProjectManager
         // Extract tasks from binary xml
         public List<TaskData> readTasksFromBinary()
         {
-            using (Stream filestream = File.Open(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\tasks.xml", FileMode.Open))
+            using (Stream filestream = File.Open(@"C:\Users\Tob\source\repos\ProjectManager\ProjectManager\SavedStates\tasks.xml", FileMode.Open))
             {
                 //create the serialiser to modify/read the binary file
                 var binaryFormatter = new BinaryFormatter();

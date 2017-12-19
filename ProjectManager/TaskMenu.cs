@@ -64,7 +64,7 @@ namespace ProjectManager
             }
 
             // Create database connection to parse data
-            using (SqlConnection openConnection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\ProjectManagerData.mdf; Integrated Security = True"))
+            using (SqlConnection openConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Tob\source\repos\ProjectManager\ProjectManager\ProjectManagerData.mdf;Integrated Security=True"))
             {
                 string saveQuery = "INSERT into Tasks (Name,Details,Phase,Deadline) VALUES (@Name,@Details,@Phase,@Deadline)";
 

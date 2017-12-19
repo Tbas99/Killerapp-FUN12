@@ -104,16 +104,16 @@ namespace ProjectManager
             }
 
             // Create database connection to parse data
-            using(SqlConnection openConnection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\ProjectManagerData.mdf; Integrated Security = True"))
+            using(SqlConnection openConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Tob\source\repos\ProjectManager\ProjectManager\ProjectManagerData.mdf;Integrated Security=True"))
             {
                 string saveQuery = "INSERT into Resources (Resource,Name,Role,AvailableDate,UnavailableDate,UnavailableDateEnd) VALUES (@Resource,@Name,@Role,@AvailableDate,@UnavailableDate,@UnavailableDateEnd)";
 
                 using (SqlCommand cmd = new SqlCommand(saveQuery, openConnection))
                 {
                     cmd.Connection = openConnection;
-                    cmd.Parameters.Add("@Resource", SqlDbType.Text).Value = data.ResourceType;
-                    cmd.Parameters.Add("@Name", SqlDbType.Text).Value = data.ResourceName;
-                    cmd.Parameters.Add("@Role", SqlDbType.Text).Value = data.ResourceRole;
+                    cmd.Parameters.Add("@Resource", SqlDbType.Text).Value = data.Type;
+                    cmd.Parameters.Add("@Name", SqlDbType.Text).Value = data.Name;
+                    cmd.Parameters.Add("@Role", SqlDbType.Text).Value = data.Role;
 
                     // If date has been filled, then parse it
                     if (hasDateBeenFilled)
