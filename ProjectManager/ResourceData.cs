@@ -17,6 +17,7 @@ namespace ProjectManager
         private string availablePeriod;
         private string unavailablePeriod;
         private string unavailablePeriodEnd;
+        private ResourceRole resourcerole;
 
         public string Type => type;
         public string Name => name;
@@ -35,5 +36,18 @@ namespace ProjectManager
             this.unavailablePeriod = resourceunavailablePeriod;
             this.unavailablePeriodEnd = resourceunavailablePeriodEnd;
         }
+    }
+
+    public enum ResourceRole
+    {
+        Freelancer, 
+        Trainee, 
+        HR, 
+        IT, 
+        Support, 
+        Management, 
+        Accountancy, 
+        Lead,
+        Finance
     }
 }

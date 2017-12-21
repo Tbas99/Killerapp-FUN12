@@ -41,8 +41,6 @@
             this.unavailableDateRange = new System.Windows.Forms.DateTimePicker();
             this.btCreateResource = new System.Windows.Forms.Button();
             this.cbResourceType = new System.Windows.Forms.ComboBox();
-            this.btAddRole = new System.Windows.Forms.Button();
-            this.btDeleteRole = new System.Windows.Forms.Button();
             this.unavailableDateRangeEnd = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -102,6 +100,7 @@
             // 
             // tbNewResourceRole
             // 
+            this.tbNewResourceRole.Enabled = false;
             this.tbNewResourceRole.Location = new System.Drawing.Point(145, 26);
             this.tbNewResourceRole.Name = "tbNewResourceRole";
             this.tbNewResourceRole.Size = new System.Drawing.Size(100, 20);
@@ -149,7 +148,7 @@
             // 
             this.btCreateResource.Location = new System.Drawing.Point(15, 252);
             this.btCreateResource.Name = "btCreateResource";
-            this.btCreateResource.Size = new System.Drawing.Size(257, 41);
+            this.btCreateResource.Size = new System.Drawing.Size(230, 41);
             this.btCreateResource.TabIndex = 12;
             this.btCreateResource.Text = "Create Resource";
             this.btCreateResource.UseVisualStyleBackColor = true;
@@ -166,26 +165,6 @@
             this.cbResourceType.Size = new System.Drawing.Size(100, 21);
             this.cbResourceType.TabIndex = 13;
             this.cbResourceType.SelectedIndexChanged += new System.EventHandler(this.cbResourceType_SelectedIndexChanged);
-            // 
-            // btAddRole
-            // 
-            this.btAddRole.Location = new System.Drawing.Point(251, 26);
-            this.btAddRole.Name = "btAddRole";
-            this.btAddRole.Size = new System.Drawing.Size(21, 21);
-            this.btAddRole.TabIndex = 14;
-            this.btAddRole.Text = "✓";
-            this.btAddRole.UseVisualStyleBackColor = true;
-            this.btAddRole.Click += new System.EventHandler(this.btAddRole_Click);
-            // 
-            // btDeleteRole
-            // 
-            this.btDeleteRole.Location = new System.Drawing.Point(252, 77);
-            this.btDeleteRole.Name = "btDeleteRole";
-            this.btDeleteRole.Size = new System.Drawing.Size(21, 21);
-            this.btDeleteRole.TabIndex = 15;
-            this.btDeleteRole.Text = "X";
-            this.btDeleteRole.UseVisualStyleBackColor = true;
-            this.btDeleteRole.Click += new System.EventHandler(this.btDeleteRole_Click);
             // 
             // unavailableDateRangeEnd
             // 
@@ -219,12 +198,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 305);
+            this.ClientSize = new System.Drawing.Size(258, 305);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.unavailableDateRangeEnd);
-            this.Controls.Add(this.btDeleteRole);
-            this.Controls.Add(this.btAddRole);
             this.Controls.Add(this.cbResourceType);
             this.Controls.Add(this.btCreateResource);
             this.Controls.Add(this.unavailableDateRange);
@@ -260,8 +237,6 @@
         private System.Windows.Forms.DateTimePicker unavailableDateRange;
         private System.Windows.Forms.Button btCreateResource;
         private System.Windows.Forms.ComboBox cbResourceType;
-        private System.Windows.Forms.Button btAddRole;
-        private System.Windows.Forms.Button btDeleteRole;
         private System.Windows.Forms.DateTimePicker unavailableDateRangeEnd;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;

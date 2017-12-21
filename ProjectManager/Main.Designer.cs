@@ -55,6 +55,9 @@
             this.lbTaskDetails = new System.Windows.Forms.ListBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
+            this.lbResourceDetails = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btPrintResourceDetails = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectManagerDataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectManagerDataDataSetBindingSource)).BeginInit();
@@ -225,7 +228,7 @@
             this.btRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btRefresh.Location = new System.Drawing.Point(185, 246);
             this.btRefresh.Name = "btRefresh";
-            this.btRefresh.Size = new System.Drawing.Size(221, 46);
+            this.btRefresh.Size = new System.Drawing.Size(159, 46);
             this.btRefresh.TabIndex = 3;
             this.btRefresh.Text = "Refresh";
             this.btRefresh.UseVisualStyleBackColor = true;
@@ -245,31 +248,61 @@
             this.lbTaskDetails.FormattingEnabled = true;
             this.lbTaskDetails.Location = new System.Drawing.Point(185, 67);
             this.lbTaskDetails.Name = "lbTaskDetails";
-            this.lbTaskDetails.Size = new System.Drawing.Size(221, 173);
+            this.lbTaskDetails.Size = new System.Drawing.Size(159, 173);
             this.lbTaskDetails.TabIndex = 6;
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(543, 67);
+            this.listView1.Location = new System.Drawing.Point(685, 67);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(628, 225);
+            this.listView1.Size = new System.Drawing.Size(486, 225);
             this.listView1.TabIndex = 7;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(543, 48);
+            this.label3.Location = new System.Drawing.Point(682, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Project-calendar:";
+            // 
+            // lbResourceDetails
+            // 
+            this.lbResourceDetails.FormattingEnabled = true;
+            this.lbResourceDetails.Location = new System.Drawing.Point(442, 67);
+            this.lbResourceDetails.Name = "lbResourceDetails";
+            this.lbResourceDetails.Size = new System.Drawing.Size(144, 173);
+            this.lbResourceDetails.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(439, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(102, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Resource overview:";
+            // 
+            // btPrintResourceDetails
+            // 
+            this.btPrintResourceDetails.Location = new System.Drawing.Point(442, 246);
+            this.btPrintResourceDetails.Name = "btPrintResourceDetails";
+            this.btPrintResourceDetails.Size = new System.Drawing.Size(144, 46);
+            this.btPrintResourceDetails.TabIndex = 11;
+            this.btPrintResourceDetails.Text = "Print selected resource details";
+            this.btPrintResourceDetails.UseVisualStyleBackColor = true;
+            this.btPrintResourceDetails.Click += new System.EventHandler(this.btPrintResourceDetails_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 304);
+            this.Controls.Add(this.btPrintResourceDetails);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbResourceDetails);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.lbTaskDetails);
@@ -319,6 +352,9 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ListBox lbResourceDetails;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btPrintResourceDetails;
     }
 }
 

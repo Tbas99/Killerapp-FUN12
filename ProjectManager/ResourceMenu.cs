@@ -16,6 +16,7 @@ namespace ProjectManager
     {
         // class to store resource data
         ResourceData data;
+        FormUtilities formfunction;
 
         // bool to check if date has been filled
         bool hasDateBeenFilled;
@@ -32,6 +33,8 @@ namespace ProjectManager
         {
             InitializeComponent();
 
+            formfunction = new FormUtilities();
+
             hideOrShowItems(false);
 
             // Set datepickers to default starting values
@@ -39,8 +42,7 @@ namespace ProjectManager
             unavailableDateRange.Value = DateTime.Now;
             unavailableDateRangeEnd.Value = DateTime.Now.AddDays(7);
 
-            string[] cbResourceRoleItems = new string[] { "Freelancer", "Trainee", "HR", "IT", "Support", "Management", "Accountancy", "Lead worker", "Finance" };
-            cbResourceRole.Items.AddRange(cbResourceRoleItems);
+            cbResourceRole.DataSource = Enum.GetValues(typeof(ResourceRole));
         }
 
         private void cbResourceType_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,6 +64,7 @@ namespace ProjectManager
             // Variables to make a method call easier to read and to avoid string conversion in a method call
             string resourceType;
             string resourceRole;
+            string resourceName;
 
             // Error happens when no value is selected and/or a person has typed in the field
             try
@@ -84,100 +87,28 @@ namespace ProjectManager
                     resourceRole = cbResourceRole.Text;
                 }
             }
+            finally
+            {
+                resourceName = tbResourceName.Text;
+            }
 
 
             // Has the date been filled? Call method in another way if not.
-            // Adds resource to public static list.
+            // Adds resource to public list.
             if (hasDateBeenFilled)
             {
                 availableDate = availableDateRange.Value.ToString("dd/MM/yyyy");
                 unavailableDate = unavailableDateRange.Value.ToString("dd/MM/yyyy");
                 unavailableDateEnd = unavailableDateRangeEnd.Value.ToString("dd/MM/yyyy");
 
-                data = new ResourceData(resourceType, tbResourceName.Text, resourceRole, availableDate, unavailableDate, unavailableDateEnd);
-                resources.Add(data);
+                formfunction.parseResourceDatabaseData(this, hasDateBeenFilled, resourceType, resourceName, resourceRole, availableDate, unavailableDate, unavailableDateEnd);
             }
             else
             {
-                data = new ResourceData(resourceType, tbResourceName.Text, resourceRole);
-                resources.Add(data);
-            }
-
-            // Create database connection to parse data
-            using(SqlConnection openConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Tob\source\repos\ProjectManager\ProjectManager\ProjectManagerData.mdf;Integrated Security=True"))
-            {
-                string saveQuery = "INSERT into Resources (Resource,Name,Role,AvailableDate,UnavailableDate,UnavailableDateEnd) VALUES (@Resource,@Name,@Role,@AvailableDate,@UnavailableDate,@UnavailableDateEnd)";
-
-                using (SqlCommand cmd = new SqlCommand(saveQuery, openConnection))
-                {
-                    cmd.Connection = openConnection;
-                    cmd.Parameters.Add("@Resource", SqlDbType.Text).Value = data.Type;
-                    cmd.Parameters.Add("@Name", SqlDbType.Text).Value = data.Name;
-                    cmd.Parameters.Add("@Role", SqlDbType.Text).Value = data.Role;
-
-                    // If date has been filled, then parse it
-                    if (hasDateBeenFilled)
-                    {
-                        cmd.Parameters.Add("@AvailableDate", SqlDbType.Date).Value = availableDate;
-                        cmd.Parameters.Add("@UnavailableDate", SqlDbType.Date).Value = unavailableDate;
-                        cmd.Parameters.Add("@UnavailableDateEnd", SqlDbType.Date).Value = unavailableDateEnd;
-                    }
-                    else
-                    {
-                        cmd.Parameters.Add("@AvailableDate", SqlDbType.Date).Value = DBNull.Value;
-                        cmd.Parameters.Add("@UnavailableDate", SqlDbType.Date).Value = DBNull.Value;
-                        cmd.Parameters.Add("@UnavailableDateEnd", SqlDbType.Date).Value = DBNull.Value;
-                    }
-
-                    // Error handle the connection
-                    try
-                    {
-                        openConnection.Open();
-                        int recordsAdded = cmd.ExecuteNonQuery();
-                        MessageBox.Show(recordsAdded + " rows have been touched!");
-                    }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show("Something went wrong with an SQL action....", "SQL-related exception");
-                        MessageBox.Show(ex.ToString());
-                    }
-                    // Catch any other exception other then sql
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Something went wrong....", "General exception");
-                        MessageBox.Show(ex.ToString());
-                    }
-                    finally
-                    {
-                        openConnection.Close();
-                    }
-                }
-            }
-            // Close the window succesfully
-            clearFormState();
-            this.Hide();
-        }
-
-        private void btAddRole_Click(object sender, EventArgs e)
-        {
-            string roleName = tbNewResourceRole.Text;
-
-            if (String.IsNullOrWhiteSpace(roleName))
-            {
-                MessageBox.Show("Er is geen rolnaam ingevuld!");
-            }
-            else
-            {
-                cbResourceRole.Items.Add(roleName);
-                tbNewResourceRole.Clear();
+                formfunction.parseResourceDatabaseData(this, hasDateBeenFilled, resourceType, resourceName, resourceRole);
             }
         }
-
-        private void btDeleteRole_Click(object sender, EventArgs e)
-        {
-            cbResourceRole.Items.Remove(cbResourceRole.SelectedItem);
-        }
-
+        
 
         // Hide a bunch of irrelevant items, or show them
         private void hideOrShowItems(bool HideOrShow)
@@ -193,7 +124,7 @@ namespace ProjectManager
             hasDateBeenFilled = HideOrShow;
         }
 
-        private void clearFormState()
+        public void clearFormState()
         {
             //cbResourceType.SelectedIndex = -1;
             tbNewResourceRole.Clear();
