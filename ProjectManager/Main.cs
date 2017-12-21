@@ -10,6 +10,11 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Calendar.v3;
+using Google.Apis.Calendar.v3.Data;
+using Google.Apis.Services;
+using System.Threading;
 
 namespace ProjectManager
 {
@@ -19,6 +24,9 @@ namespace ProjectManager
         ResourceMenu createResource;
         TaskMenu createTask;
         FormUtilities formUtilities;
+        GoogleCalendarSync calendarFunctions;
+
+        public List<Event> createdEventsOverview;
 
         public Main()
         {
@@ -26,6 +34,8 @@ namespace ProjectManager
             createResource = new ResourceMenu();
             createTask = new TaskMenu();
             formUtilities = new FormUtilities();
+            createdEventsOverview = new List<Event>();
+            calendarFunctions = new GoogleCalendarSync();
         }
 
         private void resourceCreationMenuItem_Click(object sender, EventArgs e)
@@ -81,6 +91,17 @@ namespace ProjectManager
             File.Delete(@"C:\Users\Tobias\source\repos\FUN12 Project\Killerapp-FUN12\ProjectManager\SavedStates\tasks.xml");
         }
 
+        private void btPrintResourceDetails_Click(object sender, EventArgs e)
+        {
+            formUtilities.printSelectedResourceDetails(createResource.resources, lbResourceDetails);
+        }
+
+        private void syncToGoogleCalendarsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            calendarFunctions.syncTasks(createTask.tasks);
+        }
+
+        // Ready up the listview
         private void populateCalendar()
         {
             DateTime calendarDays = new DateTime();
@@ -94,11 +115,6 @@ namespace ProjectManager
                 listView1.Columns.Add(columnName, 75);
                 calendarDays = calendarDays.AddDays(1);
             }
-        }
-
-        private void btPrintResourceDetails_Click(object sender, EventArgs e)
-        {
-            formUtilities.printSelectedResourceDetails(createResource.resources, lbResourceDetails);
         }
     }
 }

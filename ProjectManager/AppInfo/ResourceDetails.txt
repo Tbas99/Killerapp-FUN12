@@ -1,0 +1,6 @@
+Resource name: dsafdasfds
+Resource type: Other
+Resource role: Management
+Resource available period: 
+Resource unavailable period start: 
+Resource unavailable period end: 

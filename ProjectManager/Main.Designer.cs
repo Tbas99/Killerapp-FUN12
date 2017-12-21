@@ -129,6 +129,7 @@
             this.syncToGoogleCalendarsToolStripMenuItem.Name = "syncToGoogleCalendarsToolStripMenuItem";
             this.syncToGoogleCalendarsToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.syncToGoogleCalendarsToolStripMenuItem.Text = "Sync to Google Calendars";
+            this.syncToGoogleCalendarsToolStripMenuItem.Click += new System.EventHandler(this.syncToGoogleCalendarsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -299,7 +300,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1183, 304);
+            this.ClientSize = new System.Drawing.Size(1183, 306);
             this.Controls.Add(this.btPrintResourceDetails);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbResourceDetails);
@@ -311,6 +312,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbProjectTasksResources);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "Project manager";

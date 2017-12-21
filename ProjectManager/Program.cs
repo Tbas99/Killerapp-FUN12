@@ -16,7 +16,7 @@ namespace ProjectManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WelcomeSelection());
+            Application.Run(new Main());
         }
     }
 }

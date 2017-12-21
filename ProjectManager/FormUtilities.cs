@@ -92,7 +92,15 @@ namespace ProjectManager
         public void printSelectedResourceDetails(List<ResourceData> resources, ListBox listbox)
         {
             string selectedResource;
-            selectedResource = listbox.SelectedItem.ToString();
+            try
+            {
+                selectedResource = listbox.SelectedItem.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("U dient eerst een resource te selecteren!");
+                return;
+            }
 
             foreach (ResourceData r in resources)
             {
